@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>与伴侣家人的健康边界</title>
+<style>
+:root{--bg:#f6f8fb;--surface:#fff;--text:#172033;--muted:#617087;--line:#dce3ed;--accent:#315b8f;--accent2:#e9f0f8;--shadow:0 12px 35px rgba(30,55,85,.08);--r:20px}
+[data-theme=dark]{--bg:#111722;--surface:#192231;--text:#edf2f8;--muted:#aab6c7;--line:#303d4f;--accent:#91b8e7;--accent2:#24374f;--shadow:0 12px 35px rgba(0,0,0,.24)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.75 system-ui,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif}
+a{color:var(--accent)}button,input,textarea{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1120px;margin:auto;padding:10px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.brand{font-weight:800;margin-right:auto}.navlinks{display:flex;gap:5px;flex-wrap:wrap}.navlinks a,.toggle{border:1px solid transparent;border-radius:999px;padding:6px 10px;text-decoration:none;color:var(--muted);background:transparent;font-size:12px}.navlinks a:hover,.toggle:hover{background:var(--accent2);color:var(--text)}.controls{display:flex;gap:5px}
+main{max-width:1120px;margin:auto;padding:28px 18px 70px}.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:20px;margin-bottom:26px}.hero-card,.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}.hero-card{padding:32px}.hero h1{font-size:clamp(2rem,5vw,3.8rem);line-height:1.08;letter-spacing:-.04em;margin:10px 0 15px}.hero p,.card p{color:var(--muted)}.hero-side{padding:25px;background:linear-gradient(145deg,var(--accent2),var(--surface))}
+.pill{display:inline-block;padding:5px 9px;border-radius:99px;background:var(--accent2);color:var(--accent);font-size:12px;font-weight:750;margin:2px}.progress{height:8px;background:var(--accent2);border-radius:99px;overflow:hidden;margin-top:6px}.progress span{display:block;height:100%;width:0;background:var(--accent);transition:.3s}
+section{scroll-margin-top:90px;margin:28px 0}.head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:13px}.head h2{margin:0;font-size:1.65rem}.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card{padding:19px}.card h3{margin:0 0 7px}
+label{display:block;padding:9px 0;border-bottom:1px solid var(--line)}input[type=checkbox]{accent-color:var(--accent);margin-right:8px}
+.type{border-top:4px solid var(--accent)}.emoji{font-size:1.8rem}.type ul{padding-left:20px}.callout{padding:17px;border-radius:15px;background:var(--accent2);border-left:4px solid var(--accent);margin:13px 0}.callout strong{display:block}
+details{border:1px solid var(--line);border-radius:15px;padding:12px 14px;background:var(--surface);margin:9px 0}summary{cursor:pointer;font-weight:750}.answer{color:var(--muted);margin-top:9px}
+textarea{width:100%;min-height:110px;resize:vertical;border:1px solid var(--line);border-radius:14px;background:var(--bg);color:var(--text);padding:11px}.phrase{padding:13px;border:1px dashed var(--line);border-radius:13px;margin:8px 0}.phrase button{float:right;border:0;background:var(--accent2);color:var(--text);border-radius:8px;padding:3px 7px;font-size:12px}
+.steps{counter-reset:s}.step{display:grid;grid-template-columns:40px 1fr;gap:11px;padding:13px 0;border-bottom:1px solid var(--line)}.num{width:35px;height:35px;border-radius:50%;display:grid;place-items:center;background:var(--accent2);color:var(--accent);font-weight:800}
+footer{text-align:center;color:var(--muted);border-top:1px solid var(--line);padding:24px 18px}
+#top{position:fixed;right:15px;bottom:15px;width:33px;height:33px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--text);opacity:0;pointer-events:none}#top.show{opacity:1;pointer-events:auto}
+@media(max-width:800px){.hero,.grid,.grid2{grid-template-columns:1fr}.nav{align-items:flex-start}.brand{width:100%;padding-right:100px;margin:0}.controls{position:absolute;right:12px;top:10px}.navlinks{width:100%;order:3}.navlinks a{flex:1;text-align:center}}
+@media(max-width:430px){main{padding:21px 12px 55px}.nav{padding:9px 11px 7px}.navlinks a{font-size:10px;padding:6px 4px}.hero-card{padding:23px}.hero h1{font-size:2.15rem}}
+</style>
+</head>
+<body>
+<header><nav class="nav"><div class="brand" data-s="与伴侣家人的健康边界" data-t="與伴侶家人的健康界線"></div><div class="controls"><button class="toggle" id="lang">繁</button><button class="toggle" id="theme" data-dark-toggle aria-label="切换深色模式" aria-pressed="false">◐ 深色</button></div><div class="navlinks"><a href="#recognize" data-s="认识模式" data-t="認識模式">认识模式</a><a href="#patterns">常见模式</a><a href="#rights">边界与权利</a><a href="#practice">练习表达</a><a href="#practical" data-s="实用技巧" data-t="實用技巧">实用技巧</a>
+        <a href="#partner" data-s="伴侣合作" data-t="伴侶合作">伴侣合作</a><a href="#next" data-s="下一步" data-t="下一步">下一步</a></div></nav></header>
+<main>
+<div class="hero"><div class="hero-card"><span class="pill" data-s="互动练习" data-t="互動練習"></span><span class="pill" data-s="自助阅读" data-t="自助閱讀"></span>
+<h1 data-s="保护关系，也不要放弃自己。" data-t="保護關係，也不要放棄自己。"></h1>
+<p data-s="当伴侣的原生家庭不断把压力带进你们的关系时，重点并不是赢下每一次互动，而是看清模式、分辨什么真正重要、减少反应式沟通，并建立自己能够持续执行的边界。" data-t="當伴侶的原生家庭不斷把壓力帶進你們的關係時，重點並不是贏下每一次互動，而是看清模式、分辨什麼真正重要、減少反應式溝通，並建立自己能夠持續執行的界線。"></p>
+<div><span class="muted" data-s="你的练习进度" data-t="你的練習進度"></span><div class="progress"><span id="bar"></span></div></div></div>
+<div class="hero-card hero-side"><h3 data-s="先从这里开始" data-t="先從這裡開始"></h3><p data-s="并不是每一个难相处的家人都具有伤害性。可以先观察反复出现的模式：贬低、过度介入、控制、混乱、排斥、内疚压力，或不断要求你牺牲自己的界限。" data-t="並不是每一個難相處的家人都具有傷害性。可以先觀察反覆出現的模式：貶低、過度介入、控制、混亂、排斥、內疚壓力，或不斷要求你犧牲自己的界線。"></p><div class="callout"><strong data-s="先暂停，再回应" data-t="先暫停，再回應"></strong><span data-s="问自己：发生了什么？我赋予它什么意义？现在最合适的界限或请求是什么？" data-t="問自己：發生了什麼？我賦予它什麼意義？現在最合適的界線或請求是什麼？"></span></div></div></div>
+
+<section id="recognize"><div class="head"><h2 data-s="1．先认识发生了什么" data-t="1．先認識發生了什麼"></h2><span class="muted" data-s="先观察，再判断" data-t="先觀察，再判斷"></span></div><div class="card">
+<label><input type="checkbox" class="track"><span data-s="我可以描述具体行为，而不是给对方贴标签或猜测动机。" data-t="我可以描述具體行為，而不是給對方貼標籤或猜測動機。"></span></label>
+<label><input type="checkbox" class="track"><span data-s="这是反复出现的模式，而不只是一次尴尬的互动。" data-t="這是反覆出現的模式，而不只是一次尷尬的互動。"></span></label>
+<label><input type="checkbox" class="track"><span data-s="它影响了我的情绪、家庭安排、育儿、隐私或伴侣关系。" data-t="它影響了我的情緒、家庭安排、育兒、隱私或伴侶關係。"></span></label>
+<label><input type="checkbox" class="track"><span data-s="我能区分“我不喜欢”与“这已经越过了我的界限”。" data-t="我能區分「我不喜歡」與「這已經越過了我的界線」。"></span></label>
+<label><input type="checkbox" class="track"><span data-s="我注意到了伴侣在这些互动中的反应。" data-t="我注意到了伴侶在這些互動中的反應。"></span></label>
+</div><div class="callout"><strong data-s="一个重要区分" data-t="一個重要區分"></strong><span data-s="口味、文化、个性、价值观不同，本身不等于伤害。更值得关注的是持续的贬低、胁迫、侵入、操控、不尊重或破坏家庭稳定的行为模式。" data-t="口味、文化、個性、價值觀不同，本身不等於傷害。更值得關注的是持續的貶低、脅迫、侵入、操控、不尊重或破壞家庭穩定的行為模式。"></span></div></section>
+
+<section id="patterns"><div class="head"><h2 data-s="2．五种常见模式" data-t="2．五種常見模式"></h2><span class="muted" data-s="一个人可能同时表现出多种模式。" data-t="一個人可能同時表現出多種模式。"></span></div><div class="grid">
+<div class="card type"><div class="emoji">🔎</div><h3 data-s="批评型" data-t="批評型"></h3><p data-s="反复挑剔、贬低、指责或以“我是为你好”为理由不断评价你的能力、选择、外表、育儿方式或价值观。" data-t="反覆挑剔、貶低、指責或以「我是為你好」為理由不斷評價你的能力、選擇、外表、育兒方式或價值觀。"></p></div>
+<div class="card type"><div class="emoji">🫂</div><h3 data-s="吞没型" data-t="吞沒型"></h3><p data-s="把亲密理解为随时可获得，把时间、陪伴和忠诚当成衡量爱的标准，难以接受你拥有独立空间。" data-t="把親密理解為隨時可獲得，把時間、陪伴和忠誠當成衡量愛的標準，難以接受你擁有獨立空間。"></p></div>
+<div class="card type"><div class="emoji">🎛️</div><h3 data-s="控制型" data-t="控制型"></h3><p data-s="通过内疚、金钱、恩惠、压力或“我知道什么最好”来影响成年人的生活决定。" data-t="透過內疚、金錢、恩惠、壓力或「我知道什麼最好」來影響成年人的生活決定。"></p></div>
+<div class="card type"><div class="emoji">🌪️</div><h3 data-s="混乱型" data-t="混亂型"></h3><p data-s="围绕成瘾、冲突、财务或其他危机反复出现混乱，让你的家庭不断进入救火或收拾残局的状态。" data-t="圍繞成癮、衝突、財務或其他危機反覆出現混亂，讓你的家庭不斷進入救火或收拾殘局的狀態。"></p></div>
+<div class="card type"><div class="emoji">🚪</div><h3 data-s="排斥型" data-t="排斥型"></h3><p data-s="通过冷落、排除、敌意或制造“你还是我们”的忠诚考验，让你和伴侣的关系承受压力。" data-t="透過冷落、排除、敵意或製造「你還是我們」的忠誠考驗，讓你和伴侶的關係承受壓力。"></p></div>
+<div class="card type"><div class="emoji">🔺</div><h3 data-s="三角关系" data-t="三角關係"></h3><p data-s="冲突往往不是两个人的问题。伴侣可能被夹在原生家庭的忠诚与正在建立的伴侣关系之间。" data-t="衝突往往不是兩個人的問題。伴侶可能被夾在原生家庭的忠誠與正在建立的伴侶關係之間。"></p></div>
+</div></section>
+
+<section><div class="head"><h2 data-s="3．检查那些容易让我们卡住的想法" data-t="3．檢查那些容易讓我們卡住的想法"></h2></div><div class="grid2">
+<details><summary data-s="“结婚以后就会好起来。”" data-t="「結婚以後就會好起來。」"></summary><div class="answer" data-s="重要的人生节点不会自动改变已经存在的互动模式。与其等待某个节点，不如观察长期、重复的行为。" data-t="重要的人生節點不會自動改變已經存在的互動模式。與其等待某個節點，不如觀察長期、重複的行為。"></div></details>
+<details><summary data-s="“等他们了解我，就会接受我。”" data-t="「等他們了解我，就會接受我。」"></summary><div class="answer" data-s="时间和熟悉有时会改善关系，但不能保证对方一定会改变。你的自我尊重不需要以对方的认可为条件。" data-t="時間和熟悉有時會改善關係，但不能保證對方一定會改變。你的自我尊重不需要以對方的認可為條件。"></div></details>
+<details><summary data-s="“有了孩子以后，大家会更团结。”" data-t="「有了孩子以後，大家會更團結。」"></summary><div class="answer" data-s="孩子可能带来连接，也可能带来更多育儿分歧。越早明确父母之间的决定权，越能减少后续冲突。" data-t="孩子可能帶來連結，也可能帶來更多育兒分歧。越早明確父母之間的決定權，越能減少後續衝突。"></div></details>
+<details><summary data-s="“我顺着他们，大家就能和平。”" data-t="「我順著他們，大家就能和平。」"></summary><div class="answer" data-s="让步可能暂时降低冲突，却也可能强化原来的模式。可以问问自己：这份短期和平，长期代价是什么？" data-t="讓步可能暫時降低衝突，卻也可能強化原來的模式。可以問問自己：這份短期和平，長期代價是什麼？"></div></details>
+<details><summary data-s="“他们是家人，所以他们有更大的决定权。”" data-t="「他們是家人，所以他們有更大的決定權。」"></summary><div class="answer" data-s="家庭身份不会取消成年人的隐私、选择权，以及参与自己家庭决定的权利。" data-t="家庭身份不會取消成年人的隱私、選擇權，以及參與自己家庭決定的權利。"></div></details>
+<details><summary data-s="“住得远，问题自然会消失。”" data-t="「住得遠，問題自然會消失。」"></summary><div class="answer" data-s="距离会改变接触方式，却不一定改变互动模式。电话、探访、金钱和家庭期待仍可能带着同样的动态。" data-t="距離會改變接觸方式，卻不一定改變互動模式。電話、探訪、金錢和家庭期待仍可能帶著同樣的動態。"></div></details>
+</div></section>
+
+<section id="rights"><div class="head"><h2 data-s="4．你的边界与基本权利" data-t="4．你的界線與基本權利"></h2></div><div class="grid">
+<div class="card"><h3 data-s="作为一个人" data-t="作為一個人"></h3><ul><li data-s="保护自己的身心健康" data-t="保護自己的身心健康"></li><li data-s="得到基本尊重" data-t="得到基本尊重"></li><li data-s="表达自己的感受、价值观和生活方式" data-t="表達自己的感受、價值觀和生活方式"></li><li data-s="犯错，也可以改变主意" data-t="犯錯，也可以改變主意"></li><li data-s="拥有属于自己的时间和空间" data-t="擁有屬於自己的時間和空間"></li><li data-s="被认真对待" data-t="被認真對待"></li></ul></div>
+<div class="card"><h3 data-s="与伴侣相处" data-t="與伴侶相處"></h3><ul><li data-s="共同决定家庭规则" data-t="共同決定家庭規則"></li><li data-s="在家庭关系冲突中请求支持" data-t="在家庭關係衝突中請求支持"></li><li data-s="表达自己的不舒服，而不被轻易否定" data-t="表達自己的不舒服，而不被輕易否定"></li><li data-s="关系长期卡住时，可以一起寻求专业帮助" data-t="關係長期卡住時，可以一起尋求專業幫助"></li></ul></div>
+<div class="card"><h3 data-s="与伴侣家人相处" data-t="與伴侶家人相處"></h3><ul><li data-s="说“不”以及表达不同意见" data-t="說「不」以及表達不同意見"></li><li data-s="不必一定喜欢或亲近他们" data-t="不必一定喜歡或親近他們"></li><li data-s="说明哪些行为伤害了你" data-t="說明哪些行為傷害了你"></li><li data-s="请求对方不要介入伴侣之间的问题" data-t="請求對方不要介入伴侶之間的問題"></li><li data-s="提出自己的合理需求" data-t="提出自己的合理需求"></li><li data-s="决定接触频率、时间和重要节日的安排" data-t="決定接觸頻率、時間和重要節日的安排"></li></ul></div>
+</div></section>
+
+<section id="practice"><div class="head"><h2 data-s="5．练习：平静、清楚地表达" data-t="5．練習：平靜、清楚地表達"></h2><span class="muted" data-s="界限不是惩罚。" data-t="界線不是懲罰。"></span></div><div class="grid2">
+<div class="card"><h3 data-s="一个实用的界限表达结构" data-t="一個實用的界線表達結構"></h3><div class="steps">
+<div class="step"><div class="num">1</div><div><b data-s="描述行为" data-t="描述行為"></b><br><span data-s="“当有人反复评论我们怎么带孩子……”" data-t="「當有人反覆評論我們怎麼帶孩子……」"></span></div></div>
+<div class="step"><div class="num">2</div><div><b data-s="说明立场" data-t="說明立場"></b><br><span data-s="“这是我们两个人共同决定的。”" data-t="「這是我們兩個人共同決定的。」"></span></div></div>
+<div class="step"><div class="num">3</div><div><b data-s="说明界限" data-t="說明界線"></b><br><span data-s="“我们不会在探访时反复讨论这件事。”" data-t="「我們不會在探訪時反覆討論這件事。」"></span></div></div>
+<div class="step"><div class="num">4</div><div><b data-s="说明你能控制的行动" data-t="說明你能控制的行動"></b><br><span data-s="“如果继续这样说，我们会先结束这次谈话。”" data-t="「如果繼續這樣說，我們會先結束這次談話。」"></span></div></div>
+</div></div>
+<div class="card"><h3 data-s="不防御式沟通" data-t="不防禦式溝通"></h3><ul><li data-s="描述发生了什么，不诊断对方的动机。" data-t="描述發生了什麼，不診斷對方的動機。"></li><li data-s="多使用“我”和“我们”。" data-t="多使用「我」和「我們」。"></li><li data-s="直接说出你希望对方做什么。" data-t="直接說出你希望對方做什麼。"></li><li data-s="不要把一次冲突变成从认识以来的总清算。" data-t="不要把一次衝突變成從認識以來的總清算。"></li><li data-s="对方不需要先同意你的看法，你仍然可以执行自己的界限。" data-t="對方不需要先同意你的看法，你仍然可以執行自己的界線。"></li></ul>
+<div class="phrase"><span data-s="“我知道你有不同看法，但我们的决定已经做出了，我不想继续争论。”" data-t="「我知道你有不同看法，但我們的決定已經做出了，我不想繼續爭論。」"></span><button onclick="copyPhrase(this)">复制</button></div>
+<div class="phrase"><span data-s="“谢谢你的建议。如果我们需要意见，会主动问你。”" data-t="「謝謝你的建議。如果我們需要意見，會主動問你。」"></span><button onclick="copyPhrase(this)">复制</button></div>
+<div class="phrase"><span data-s="“这句话让我不舒服。如果继续这样说，我会先离开。”" data-t="「這句話讓我不舒服。如果繼續這樣說，我會先離開。」"></span><button onclick="copyPhrase(this)">复制</button></div>
+</div></div></section>
+
+<section><div class="head"><h2 data-s="6．当愤怒出现时" data-t="6．當憤怒出現時"></h2><span class="muted" data-s="让愤怒提供信息，而不是替你做决定。" data-t="讓憤怒提供資訊，而不是替你做決定。"></span></div><div class="card"><p data-s="强烈的愤怒有时是在提醒你：某个重要的需要或界限被忽视了。在进行困难对话之前，可以先独自写下想说的话、和可信任的人或专业人士谈谈、活动身体，或者先暂停，等情绪强度下降后再沟通。重点不是否认愤怒，而是不让愤怒替你选择表达方式。" data-t="強烈的憤怒有時是在提醒你：某個重要的需要或界線被忽視了。在進行困難對話之前，可以先獨自寫下想說的話、和可信任的人或專業人士談談、活動身體，或者先暫停，等情緒強度下降後再溝通。重點不是否認憤怒，而是不讓憤怒替你選擇表達方式。"></p><div class="grid2"><div><h3 data-s="问问自己" data-t="問問自己"></h3><ul><li data-s="具体发生了什么？" data-t="具體發生了什麼？"></li><li data-s="我赋予了这件事什么意义？" data-t="我賦予了這件事什麼意義？"></li><li data-s="哪个界限被越过了？" data-t="哪個界線被越過了？"></li><li data-s="其中哪些部分是我可以改变的？" data-t="其中哪些部分是我可以改變的？"></li></ul></div><div><h3 data-s="开口前" data-t="開口前"></h3><ul><li data-s="先把情绪强度降下来。" data-t="先把情緒強度降下來。"></li><li data-s="一次只谈一个问题。" data-t="一次只談一個問題。"></li><li data-s="提前想清楚你想提出的请求。" data-t="提前想清楚你想提出的請求。"></li><li data-s="想好如果对方继续，你准备采取什么行动。" data-t="想好如果對方繼續，你準備採取什麼行動。"></li></ul></div></div></div></section>
+
+
+<section id="practical">
+  <div class="eyebrow" data-s="实用应对工具箱" data-t="實用應對工具箱">实用应对工具箱</div>
+  <h2 data-s="真正遇到事情时，可以怎么做？" data-t="真正遇到事情時，可以怎麼做？">真正遇到事情时，可以怎么做？</h2>
+  <p class="lead" data-s="界限更容易坚持，往往是因为你提前想好了具体情况下要怎么回应。" data-t="界限更容易堅持，往往是因為你提前想好了具體情況下要怎麼回應。">界限更容易坚持，往往是因为你提前想好了具体情况下要怎么回应。</p>
+  <div class="grid">
+    <article class="card"><h3 data-s="1. 先确定三个“不能接受”" data-t="1. 先確定三個「不能接受」">1. 先确定三个“不能接受”</h3><p data-s="选三个你不会继续参与的行为，例如辱骂、吼叫或未经同意突然上门。不要列太多，少而清楚更容易坚持。" data-t="選三個你不會繼續參與的行為，例如辱罵、吼叫或未經同意突然上門。不要列太多，少而清楚更容易堅持。">选三个你不会继续参与的行为，例如辱骂、吼叫或未经同意突然上门。不要列太多，少而清楚更容易坚持。</p><div class="tip" data-s="<strong>写下来：</strong>“如果发生X，我会做Y。”" data-t="<strong>寫下來：</strong>「如果發生X，我會做Y。」"><strong>写下来：</strong>“如果发生X，我会做Y。”</div></article>
+    <article class="card"><h3 data-s="2. 不要过度解释" data-t="2. 不要過度解釋">2. 不要过度解释</h3><p data-s="你不需要不断证明自己的界限合理。简短、稳定的回应，通常比长篇辩解更容易坚持。" data-t="你不需要不斷證明自己的界限合理。簡短、穩定的回應，通常比長篇辯解更容易堅持。">你不需要不断证明自己的界限合理。简短、稳定的回应，通常比长篇辩解更容易坚持。</p><div class="script" data-s="<strong>可以说：</strong>“这对我们来说不合适。”" data-t="<strong>可以說：</strong>「這對我們來說不合適。」"><strong>可以说：</strong>“这对我们来说不合适。”</div></article>
+    <article class="card"><h3 data-s="3. 使用“复读机”技巧" data-t="3. 使用「複讀機」技巧">3. 使用“复读机”技巧</h3><p data-s="不要被拉进无休止的争论。平静地重复同一句话；如果对方继续施压，就换话题或结束对话。" data-t="不要被拉進無休止的爭論。平靜地重複同一句話；如果對方繼續施壓，就換話題或結束對話。">不要被拉进无休止的争论。平静地重复同一句话；如果对方继续施压，就换话题或结束对话。</p><div class="script" data-s="<strong>可以说：</strong>“我听到了。我们的决定不会改变。”" data-t="<strong>可以說：</strong>「我聽到了。我們的決定不會改變。」"><strong>可以说：</strong>“我听到了。我们的决定不会改变。”</div></article>
+    <article class="card"><h3 data-s="4. 情绪升级时，不要继续谈判" data-t="4. 情緒升級時，不要繼續談判">4. 情绪升级时，不要继续谈判</h3><p data-s="如果开始吼叫、辱骂，或有人逼你马上答应某件事，可以暂停。事情可以以后再谈。" data-t="如果開始吼叫、辱罵，或有人逼你馬上答應某件事，可以暫停。事情可以以後再談。">如果开始吼叫、辱骂，或有人逼你马上答应某件事，可以暂停。事情可以以后再谈。</p><div class="script" data-s="<strong>可以说：</strong>“我们先暂停这个话题，以后再谈。”" data-t="<strong>可以說：</strong>「我們先暫停這個話題，以後再談。」"><strong>可以说：</strong>“我们先暂停这个话题，以后再谈。”</div></article>
+    <article class="card"><h3 data-s="5. 控制的是“接触程度”，不是对方" data-t="5. 控制的是「接觸程度」，不是對方">5. 控制的是“接触程度”，不是对方</h3><p data-s="你可能无法阻止对方批评、指责或让你内疚，但你可以决定自己给多少时间、信息和接触机会。" data-t="你可能無法阻止對方批評、指責或讓你內疚，但你可以決定自己給多少時間、資訊和接觸機會。">你可能无法阻止对方批评、指责或让你内疚，但你可以决定自己给多少时间、信息和接触机会。</p><div class="tip" data-s="<strong>可以调整：</strong>见面频率、通话长度、话题、地点、时间，以及是否回复。" data-t="<strong>可以調整：</strong>見面頻率、通話長度、話題、地點、時間，以及是否回覆。"><strong>可以调整：</strong>见面频率、通话长度、话题、地点、时间，以及是否回复。</div></article>
+    <article class="card"><h3 data-s="6. 提前设计“离场方案”" data-t="6. 提前設計「離場方案」">6. 提前设计“离场方案”</h3><p data-s="如果可能，使用自己的交通方式，提前约定结束时间，并和伴侣约好一个只有你们懂的“该走了”信号。" data-t="如果可能，使用自己的交通方式，提前約定結束時間，並和伴侶約好一個只有你們懂的「該走了」信號。">如果可能，使用自己的交通方式，提前约定结束时间，并和伴侣约好一个只有你们懂的“该走了”信号。</p><div class="tip" data-s="<strong>见面前先确定：</strong>开始时间、结束时间、交通方式和离场时要说的话。" data-t="<strong>見面前先確定：</strong>開始時間、結束時間、交通方式和離場時要說的話。"><strong>见面前先确定：</strong>开始时间、结束时间、交通方式和离场时要说的话。</div></article>
+    <article class="card"><h3 data-s="7. 不要让孩子卷入成人冲突" data-t="7. 不要讓孩子捲入成人衝突">7. 不要让孩子卷入成人冲突</h3><p data-s="不要让孩子当传话人、告密者、裁判或情绪支持者。涉及孩子的问题，尽量直接和相关成年人沟通。" data-t="不要讓孩子當傳話人、告密者、裁判或情緒支持者。涉及孩子的問題，盡量直接和相關成年人溝通。">不要让孩子当传话人、告密者、裁判或情绪支持者。涉及孩子的问题，尽量直接和相关成年人沟通。</p><div class="script" data-s="<strong>可以说：</strong>“请不要让孩子夹在中间。成人的问题我们自己处理。”" data-t="<strong>可以說：</strong>「請不要讓孩子夾在中間。成人的問題我們自己處理。」"><strong>可以说：</strong>“请不要让孩子夹在中间。成人的问题我们自己处理。”</div></article>
+    <article class="card"><h3 data-s="8. 给伴侣一个具体任务" data-t="8. 給伴侶一個具體任務">8. 给伴侣一个具体任务</h3><p data-s="与其说“你要保护我”，不如提出一个明确行为：转移话题、纠正不实信息、结束通话，或支持你们共同的决定。" data-t="與其說「你要保護我」，不如提出一個明確行為：轉移話題、糾正不實資訊、結束通話，或支持你們共同的決定。">与其说“你要保护我”，不如提出一个明确行为：转移话题、纠正不实信息、结束通话，或支持你们共同的决定。</p><div class="script" data-s="<strong>可以说：</strong>“如果你父母评论我们的育儿方式，请你说：‘这是我们为家庭做出的决定。’”" data-t="<strong>可以說：</strong>「如果你父母評論我們的育兒方式，請你說：『這是我們為家庭做出的決定。』」"><strong>可以说：</strong>“如果你父母评论我们的育儿方式，请你说：‘这是我们为家庭做出的决定。’”</div></article>
+    <article class="card"><h3 data-s="9. 提前准备高风险场景" data-t="9. 提前準備高風險場景">9. 提前准备高风险场景</h3><p data-s="节日、生日、金钱、育儿、怀孕、旅行、过夜等情境，很容易重复旧模式。不要等到压力出现后才临时决定。" data-t="節日、生日、金錢、育兒、懷孕、旅行、過夜等情境，很容易重複舊模式。不要等到壓力出現後才臨時決定。">节日、生日、金钱、育儿、怀孕、旅行、过夜等情境，很容易重复旧模式。不要等到压力出现后才临时决定。</p><div class="tip" data-s="<strong>提前问：</strong>“通常会发生什么？这一次我们准备怎么做？”" data-t="<strong>提前問：</strong>「通常會發生什麼？這一次我們準備怎麼做？」"><strong>提前问：</strong>“通常会发生什么？这一次我们准备怎么做？”</div></article>
+    <article class="card"><h3 data-s="10. 必要时记录事实" data-t="10. 必要時記錄事實">10. 必要时记录事实</h3><p data-s="如果同样的冲突反复发生，可以私下记录日期、具体请求、已经达成的约定和实际发生的事情。重点是事实，而不是给人贴标签。" data-t="如果同樣的衝突反覆發生，可以私下記錄日期、具體請求、已經達成的約定和實際發生的事情。重點是事實，而不是給人貼標籤。">如果同样的冲突反复发生，可以私下记录日期、具体请求、已经达成的约定和实际发生的事情。重点是事实，而不是给人贴标签。</p><div class="tip" data-s="<strong>记录：</strong>发生了什么、你做了什么、接下来发生了什么。" data-t="<strong>記錄：</strong>發生了什麼、你做了什麼、接下來發生了什麼。"><strong>记录：</strong>发生了什么、你做了什么、接下来发生了什么。</div></article>
+  </div>
+  <div class="callout"><h3 data-s="如果界限一次又一次被忽视" data-t="如果界限一次又一次被忽視">如果界限一次又一次被忽视</h3><p data-s="界限不是要求别人改变，而是决定你自己会怎么做。如果同样的模式持续发生，可以考虑减少接触、缩短相处时间、改变见面场景，或暂时暂停联系。" data-t="界限不是要求別人改變，而是決定你自己會怎麼做。如果同樣的模式持續發生，可以考慮減少接觸、縮短相處時間、改變見面場景，或暫時暫停聯繫。">界限不是要求别人改变，而是决定你自己会怎么做。如果同样的模式持续发生，可以考虑减少接触、缩短相处时间、改变见面场景，或暂时暂停联系。</p></div>
+  <div class="card"><h3 data-s="常见情况：可以怎么回应？" data-t="常見情況：可以怎麼回應？">常见情况：可以怎么回应？</h3>
+    <div class="script-list">
+      <div class="script" data-s="<strong>不请自来的建议：</strong>“谢谢你的想法。我们已经做了决定。”" data-t="<strong>不請自來的建議：</strong>「謝謝你的想法。我們已經做了決定。」"><strong>不请自来的建议：</strong>“谢谢你的想法。我们已经做了决定。”</div>
+      <div class="script" data-s="<strong>批评或羞辱：</strong>“如果你继续这样说话，我不会继续这段对话。”" data-t="<strong>批評或羞辱：</strong>「如果你繼續這樣說話，我不會繼續這段對話。」"><strong>批评或羞辱：</strong>“如果你继续这样说话，我不会继续这段对话。”</div>
+      <div class="script" data-s="<strong>内疚和施压：</strong>“我理解你很失望。我们的决定还是一样。”" data-t="<strong>內疚和施壓：</strong>「我理解你很失望。我們的決定還是一樣。」"><strong>内疚和施压：</strong>“我理解你很失望。我们的决定还是一样。”</div>
+      <div class="script" data-s="<strong>逼你马上回答：</strong>“我们不会在压力下做决定。决定后会告诉你。”" data-t="<strong>逼你馬上回答：</strong>「我們不會在壓力下做決定。決定後會告訴你。」"><strong>逼你马上回答：</strong>“我们不会在压力下做决定。决定后会告诉你。”</div>
+      <div class="script" data-s="<strong>连续打电话/发消息：</strong>“我们现在不方便。可以的时候会回复。”" data-t="<strong>連續打電話／發訊息：</strong>「我們現在不方便。可以的時候會回覆。」"><strong>连续打电话/发消息：</strong>“我们现在不方便。可以的时候会回复。”</div>
+      <div class="script" data-s="<strong>重复越界：</strong>“我们已经说过不要这样做。如果再次发生，我们会结束这次见面。”" data-t="<strong>重複越界：</strong>「我們已經說過不要這樣做。如果再次發生，我們會結束這次見面。」"><strong>重复越界：</strong>“我们已经说过不要这样做。如果再次发生，我们会结束这次见面。”</div>
+    </div>
+  </div>
+</section>
+
+<section id="partner"><div class="head"><h2 data-s="7．邀请伴侣成为你的盟友" data-t="7．邀請伴侶成為你的盟友"></h2><span class="muted" data-s="从“你要选我”转向“我们一起建立生活”。" data-t="從「你要選我」轉向「我們一起建立生活」。"></span></div><div class="grid2">
+<div class="card"><h3 data-s="先谈你们的关系" data-t="先談你們的關係"></h3><p data-s="选择一个相对平静的时刻。让伴侣知道，你想要的是更健康的关系，而不是赢下一场针对其家人的官司。可以承认自己在互动循环中的一部分，同时不替另一个成年人承担责任。" data-t="選擇一個相對平靜的時刻。讓伴侶知道，你想要的是更健康的關係，而不是贏下一場針對其家人的官司。可以承認自己在互動循環中的一部分，同時不替另一個成年人承擔責任。"></p><textarea data-note="partner" placeholder="我希望伴侣理解的是……"></textarea></div>
+<div class="card"><h3 data-s="提出具体请求" data-t="提出具體請求"></h3><p data-s="把“你要支持我”变成可观察的行动，例如：在不尊重出现时打断、确认你们共同的家庭决定、结束不合适的谈话，或支持你们对探访时间的安排。" data-t="把「你要支持我」變成可觀察的行動，例如：在不尊重出現時打斷、確認你們共同的家庭決定、結束不合適的談話，或支持你們對探訪時間的安排。"></p><div class="phrase"><span data-s="“如果我们能这样做，我会更有团队感……”" data-t="「如果我們能這樣做，我會更有團隊感……」"></span><button onclick="copyPhrase(this)">复制</button></div></div>
+</div></section>
+
+<section><div class="head"><h2 data-s="8．现实接纳" data-t="8．現實接納"></h2><span class="muted" data-s="接纳不等于认同或放弃边界。" data-t="接納不等於認同或放棄界線。"></span></div><div class="card"><p data-s="有些关系会逐渐变得更亲近，有些关系会长期保持一定距离，也有些关系需要明显减少接触。现实接纳的重点，是看清这段关系实际上能提供什么，而不是持续消耗自己，试图把另一个人变成你希望的样子。" data-t="有些關係會逐漸變得更親近，有些關係會長期保持一定距離，也有些關係需要明顯減少接觸。現實接納的重點，是看清這段關係實際上能提供什麼，而不是持續消耗自己，試圖把另一個人變成你希望的樣子。"></p><div class="grid2"><div class="callout"><strong data-s="接纳" data-t="接納"></strong><span data-s="你无法控制的部分：另一个成年人的信念、感受、个性、是否愿意改变，以及是否认可你。" data-t="你無法控制的部分：另一個成年人的信念、感受、個性、是否願意改變，以及是否認可你。"></span></div><div class="callout"><strong data-s="行动" data-t="行動"></strong><span data-s="你可以影响的部分：自己的时间、沟通方式、界限、参与程度、家庭规则和回应方式。" data-t="你可以影響的部分：自己的時間、溝通方式、界線、參與程度、家庭規則和回應方式。"></span></div></div><textarea data-note="reality" placeholder="我希望他们变成什么样？我现在可以现实地接受什么？"></textarea></div></section>
+
+<section id="next"><div class="head"><h2 data-s="9．选择一个下一步" data-t="9．選擇一個下一步"></h2><span class="muted" data-s="越小、越具体，越容易执行。" data-t="越小、越具體，越容易執行。"></span></div><div class="card"><div class="grid2"><div><h3 data-s="我准备先做：" data-t="我準備先做："></h3>
+<label><input type="radio" name="next"><span data-s="和伴侣进行一次平静的对话" data-t="和伴侶進行一次平靜的對話"></span></label><label><input type="radio" name="next"><span data-s="设定一个具体界限" data-t="設定一個具體界線"></span></label><label><input type="radio" name="next"><span data-s="减少一个不必要的接触场景" data-t="減少一個不必要的接觸場景"></span></label><label><input type="radio" name="next"><span data-s="提前练习一句回应" data-t="提前練習一句回應"></span></label><label><input type="radio" name="next"><span data-s="寻求专业支持" data-t="尋求專業支持"></span></label></div><div><h3 data-s="写下你的计划" data-t="寫下你的計畫"></h3><textarea data-note="plan" placeholder="我想改变的情境……&#10;我会说/做……&#10;如果继续发生，我会……"></textarea></div></div>
+<div class="callout"><strong data-s="安全优先" data-t="安全優先"></strong><span data-s="如果设定界限可能让你或他人面临暴力、威胁、跟踪、经济报复或其他严重风险，请优先考虑安全计划，并寻求合适的专业或当地支持，而不是独自正面冲突。" data-t="如果設定界線可能讓你或他人面臨暴力、威脅、跟蹤、經濟報復或其他嚴重風險，請優先考慮安全計畫，並尋求合適的專業或當地支持，而不是獨自正面衝突。"></span></div>
+</div></section>
+</main>
+<footer>Developed by <a href="https://mindx.us/zh/" target="_blank" rel="noopener">Mind X社区</a></footer>
+<button id="top" aria-label="返回顶部">↑</button>
+<script>
+(function(){
+  const root = document.documentElement;
+  const STORAGE_LANG = 'mindx-family-boundaries-lang';
+  const STORAGE_DARK = 'mindx-family-boundaries-dark';
+
+  function applyLanguage(lang){
+    const useTraditional = lang === 't';
+    document.querySelectorAll('[data-s][data-t]').forEach(el => {
+      const value = useTraditional ? el.getAttribute('data-t') : el.getAttribute('data-s');
+      if (value !== null) el.innerHTML = value;
+    });
+    root.lang = useTraditional ? 'zh-Hant' : 'zh-Hans';
+    document.body.classList.toggle('traditional', useTraditional);
+    document.querySelectorAll('[data-lang]').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    localStorage.setItem(STORAGE_LANG, lang);
+  }
+
+  function applyDark(on){
+    if (on) root.setAttribute('data-theme','dark');
+    else root.removeAttribute('data-theme');
+    const btn = document.getElementById('theme');
+    if (btn) {
+      btn.textContent = on ? '☀ 浅色' : '◐ 深色';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+    try { localStorage.setItem(STORAGE_DARK, on ? '1' : '0'); } catch(e) {}
+  }
+
+  document.addEventListener('click', function(e){
+    const langBtn = e.target.closest('[data-lang]');
+    if (langBtn) {
+      applyLanguage(langBtn.getAttribute('data-lang'));
+      return;
+    }
+    const darkBtn = e.target.closest('[data-dark-toggle]');
+    if (darkBtn) {
+      applyDark(!document.body.classList.contains('dark'));
+      return;
+    }
+    const topBtn = e.target.closest('[data-top]');
+    if (topBtn) {
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+  });
+
+  // Expand/collapse details blocks.
+  document.querySelectorAll('details').forEach(d => {
+    d.addEventListener('toggle', function(){
+      // no-op; native details handles accessibility and state
+    });
+  });
+
+  // Copy buttons.
+  document.querySelectorAll('[data-copy]').forEach(btn => {
+    btn.addEventListener('click', async function(){
+      const value = this.getAttribute('data-copy') || '';
+      try {
+        await navigator.clipboard.writeText(value);
+        const original = this.textContent;
+        this.textContent = (root.lang === 'zh-Hant') ? '已复制' : '已复制';
+        setTimeout(() => this.textContent = original, 1200);
+      } catch(e) {}
+    });
+  });
+
+  // Checklist persistence.
+  document.querySelectorAll('input[type="checkbox"][data-save]').forEach((box, i) => {
+    const key = 'mindx-check-' + i;
+    box.checked = localStorage.getItem(key) === '1';
+    box.addEventListener('change', () => localStorage.setItem(key, box.checked ? '1' : '0'));
+  });
+
+  // Reflection persistence.
+  document.querySelectorAll('textarea[data-save-text]').forEach((area, i) => {
+    const key = 'mindx-note-' + i;
+    area.value = localStorage.getItem(key) || '';
+    area.addEventListener('input', () => localStorage.setItem(key, area.value));
+  });
+
+  let savedLang = 's', savedDark = false;
+  try {
+    savedLang = localStorage.getItem(STORAGE_LANG) || 's';
+    savedDark = localStorage.getItem(STORAGE_DARK) === '1';
+  } catch(e) {}
+  applyLanguage(savedLang);
+  applyDark(savedDark);
+})();
+</script>
+</body></html>

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Healthy Boundaries with In-Laws</title>
+<style>
+:root{--bg:#f6f8fb;--surface:#fff;--text:#172033;--muted:#617087;--line:#dce3ed;--accent:#315b8f;--accent2:#e9f0f8;--good:#2f7d68;--warn:#a96d25;--shadow:0 12px 35px rgba(30,55,85,.08);--radius:20px}
+[data-theme="dark"]{--bg:#111722;--surface:#192231;--text:#edf2f8;--muted:#aab6c7;--line:#303d4f;--accent:#91b8e7;--accent2:#24374f;--good:#75c5aa;--warn:#e7ad69;--shadow:0 12px 35px rgba(0,0,0,.24)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--accent)}button,input,textarea{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1120px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:-.02em;margin-right:auto}.navlinks{display:flex;gap:6px;flex-wrap:wrap}.navlinks a,.toggle{border:1px solid transparent;border-radius:999px;padding:7px 11px;text-decoration:none;color:var(--muted);background:transparent;font-size:13px}.navlinks a:hover,.toggle:hover{background:var(--accent2);color:var(--text)}
+main{max-width:1120px;margin:auto;padding:30px 18px 70px}
+.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:22px;align-items:stretch;margin-bottom:28px}.hero-card,.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero-card{padding:34px}.hero h1{font-size:clamp(2rem,5vw,4rem);line-height:1.02;letter-spacing:-.045em;margin:0 0 18px}.hero p{font-size:1.08rem;color:var(--muted);max-width:720px}.hero-side{padding:26px;background:linear-gradient(145deg,var(--accent2),var(--surface));display:flex;flex-direction:column;justify-content:center}
+.pill{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;background:var(--accent2);color:var(--accent);font-size:12px;font-weight:750;margin:3px}
+.progress-wrap{margin:24px 0}.progress{height:8px;background:var(--accent2);border-radius:99px;overflow:hidden}.progress>span{display:block;height:100%;width:0;background:var(--accent);transition:.3s}
+section{scroll-margin-top:90px;margin:28px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:14px}.section-head h2{margin:0;font-size:1.7rem}.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card{padding:20px}.card h3{margin:0 0 8px}.card p{margin:7px 0;color:var(--muted)}
+details{border:1px solid var(--line);border-radius:16px;padding:13px 15px;background:var(--surface);margin:10px 0}summary{cursor:pointer;font-weight:750}.answer{margin-top:10px;color:var(--muted)}
+.type{border-top:4px solid var(--accent);position:relative}.type .emoji{font-size:1.8rem}.type ul,.card ul{padding-left:20px}.type li{margin:5px 0}
+.checklist label{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line)}input[type=checkbox]{margin-top:6px;accent-color:var(--accent)}
+.callout{padding:18px;border-radius:16px;background:var(--accent2);border-left:4px solid var(--accent);margin:14px 0}.callout strong{display:block;margin-bottom:4px}
+.steps{counter-reset:step}.step{display:grid;grid-template-columns:42px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.stepnum{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--accent2);color:var(--accent);font-weight:800}
+textarea{width:100%;min-height:110px;resize:vertical;border:1px solid var(--line);border-radius:14px;background:var(--bg);color:var(--text);padding:12px}.save-note{font-size:12px;color:var(--muted);margin-top:6px}
+.phrase{padding:14px;border:1px dashed var(--line);border-radius:14px;margin:9px 0}.phrase button{float:right;border:0;background:var(--accent2);color:var(--text);border-radius:8px;padding:4px 7px;font-size:12px}
+footer{text-align:center;color:var(--muted);border-top:1px solid var(--line);padding:25px 18px}
+#top{position:fixed;right:16px;bottom:16px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--text);opacity:0;pointer-events:none;transition:.2s;box-shadow:var(--shadow)}#top.show{opacity:1;pointer-events:auto}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.grid,.grid2{grid-template-columns:1fr}.nav{align-items:flex-start}.brand{width:100%;margin-right:0}.navlinks{width:100%;order:3}.navlinks a{flex:1;text-align:center}.controls{position:absolute;right:14px;top:12px}.hero-card{padding:25px}}
+@media(max-width:430px){.nav{padding:10px 12px 8px}.brand{padding-right:92px}.navlinks{gap:4px}.navlinks a{font-size:11px;padding:6px 5px}.toggle{font-size:11px;padding:6px 8px}.hero h1{font-size:2.25rem}main{padding:22px 12px 60px}}
+</style>
+</head>
+<body>
+<header><nav class="nav"><div class="brand">Healthy Family Boundaries</div><div class="controls"><button class="toggle" id="theme" aria-label="Toggle dark mode">◐ Dark</button></div><div class="navlinks"><a href="#recognize">Recognize</a><a href="#patterns">Patterns</a><a href="#rights">Rights</a><a href="#practice">Practice</a><a href="#practical">Practical tips</a>
+        <a href="#partner">Partner</a><a href="#next">Next steps</a></div></nav></header>
+<main>
+<div class="hero">
+<div class="hero-card">
+<span class="pill">Interactive client guide</span><span class="pill">Self-paced</span>
+<h1>Protect your relationship without abandoning yourself.</h1>
+<p>When extended-family conflict keeps spilling into your relationship, the goal is not to win every interaction. It is to see the pattern clearly, decide what matters, communicate with less reactivity, and build boundaries you can actually live with.</p>
+<div class="progress-wrap"><div class="muted">Your reflection progress</div><div class="progress"><span id="bar"></span></div></div>
+</div>
+<div class="hero-card hero-side">
+<h3>A useful starting point</h3>
+<p>Not every difficult relative is harmful. Focus on repeated patterns: criticism, intrusion, control, chaos, rejection, guilt, or pressure that repeatedly undermines your autonomy or relationship.</p>
+<div class="callout"><strong>Pause before reacting</strong>Ask: “What happened? What meaning did I add? What boundary or request fits the situation?”</div>
+</div>
+</div>
+
+<section id="recognize"><div class="section-head"><h2>1. Recognize the pattern</h2><span class="muted">Start with observation, not labels.</span></div>
+<div class="card checklist">
+<label><input type="checkbox" class="track"> I can describe the specific behavior without name-calling or mind-reading.</label>
+<label><input type="checkbox" class="track"> The behavior is a repeated pattern, not just one awkward interaction.</label>
+<label><input type="checkbox" class="track"> The behavior affects my emotional wellbeing, household, parenting, privacy, or relationship.</label>
+<label><input type="checkbox" class="track"> I can separate “I dislike this” from “this crosses a boundary.”</label>
+<label><input type="checkbox" class="track"> I have noticed how my partner responds when the behavior occurs.</label>
+</div>
+<div class="callout"><strong>Important distinction</strong>Differences in taste, politics, culture, personality, or family style can be uncomfortable without being harmful. The more useful question is whether there is a persistent pattern of disrespect, coercion, intrusion, manipulation, or destabilization.</div>
+</section>
+
+<section id="patterns"><div class="section-head"><h2>2. Five common patterns</h2><span class="muted">People can show more than one.</span></div>
+<div class="grid">
+<div class="card type"><div class="emoji">🔎</div><h3>Criticism</h3><p>Repeated scrutiny, put-downs, unsolicited “help,” or attacks on your competence, choices, appearance, parenting, or values.</p><ul><li>Notice whether “help” consistently leaves you smaller.</li><li>Minor irritation may need perspective; degrading patterns need limits.</li></ul></div>
+<div class="card type"><div class="emoji">🫂</div><h3>Engulfment</h3><p>Closeness becomes an expectation of constant access, time, loyalty, or participation.</p><ul><li>Privacy and separate lives are treated as disloyalty.</li><li>Tradition becomes a reason that your current needs cannot count.</li></ul></div>
+<div class="card type"><div class="emoji">🎛️</div><h3>Control</h3><p>Pressure, guilt, money, favors, intimidation, or “I know best” are used to influence adult decisions.</p><ul><li>Watch for compliance becoming the price of approval.</li><li>Household decisions belong to the adults who live in the household.</li></ul></div>
+<div class="card type"><div class="emoji">🌪️</div><h3>Chaos</h3><p>Recurring crises around addiction, conflict, finances, or instability repeatedly pull your household into rescue mode.</p><ul><li>Compassion does not require taking over responsibility.</li><li>Decide in advance what help you can and cannot provide.</li></ul></div>
+<div class="card type"><div class="emoji">🚪</div><h3>Rejection</h3><p>Coldness, exclusion, hostility, or attempts to isolate your partner from you can turn the relationship into a loyalty test.</p><ul><li>You do not need to earn basic courtesy.</li><li>Focus on protecting your relationship and dignity rather than winning approval.</li></ul></div>
+<div class="card type"><div class="emoji">🔺</div><h3>The triangle</h3><p>Conflict rarely involves only two people. Your partner may be pulled between family-of-origin loyalty and the relationship you are building together.</p><ul><li>Notice who communicates with whom.</li><li>Avoid becoming the permanent messenger between generations.</li></ul></div>
+</div></section>
+
+<section><div class="section-head"><h2>3. Check the “myths”</h2><span class="muted">Click to challenge wishful assumptions.</span></div>
+<div class="grid2">
+<details><summary>“Marriage will make things better.”</summary><div class="answer">A major life event does not automatically change an established pattern. Look at what people consistently do, not what you hope the next milestone will change.</div></details>
+<details><summary>“Once they know me, they’ll accept me.”</summary><div class="answer">Time and familiarity can help some relationships, but they cannot guarantee openness. You can build your life without making approval the condition for self-respect.</div></details>
+<details><summary>“A baby will bring everyone together.”</summary><div class="answer">A child can create connection, but it can also create a new arena for disagreement about parenting. Clarify parental decisions before conflict escalates.</div></details>
+<details><summary>“If I give in, there will finally be peace.”</summary><div class="answer">Compliance can reduce immediate conflict while reinforcing the pattern. Consider whether the short-term peace is creating a larger long-term cost.</div></details>
+<details><summary>“They’re family, so they get more say.”</summary><div class="answer">Family status does not erase your adulthood, privacy, or right to participate in decisions about your own household.</div></details>
+<details><summary>“If we live far away, the problem will disappear.”</summary><div class="answer">Distance can change the logistics without changing the relationship pattern. Calls, visits, money, and family expectations can still carry the same dynamics.</div></details>
+</div></section>
+
+<section id="rights"><div class="section-head"><h2>4. Your boundaries & rights</h2><span class="muted">Rights become useful when translated into action.</span></div>
+<div class="grid3 grid"></div>
+<div class="grid2">
+<div class="card"><h3>As a person</h3><ul><li>Protect your physical and emotional wellbeing.</li><li>Be treated with respect.</li><li>Express your beliefs, feelings, values, and traditions.</li><li>Make mistakes and change your mind.</li><li>Have independent time with your partner, children, and your own family.</li><li>Be taken seriously.</li></ul></div>
+<div class="card"><h3>With your partner</h3><ul><li>Help shape household guidelines together.</li><li>Ask for support when extended-family behavior harms you.</li><li>Raise concerns without being dismissed.</li><li>Ask for professional help when the relationship is stuck.</li></ul></div>
+<div class="card"><h3>With extended family</h3><ul><li>Say no and disagree.</li><li>You do not have to feel close to them.</li><li>Tell them when behavior hurts or crosses a line.</li><li>Ask them to stay out of couple conflicts.</li><li>Request what you need.</li><li>Set limits on time, access, visits, and special occasions.</li></ul></div>
+</div>
+</section>
+
+<section id="practice"><div class="section-head"><h2>5. Practice calm, clear responses</h2><span class="muted">Boundary ≠ punishment.</span></div>
+<div class="grid2">
+<div class="card"><h3>Boundary formula</h3><div class="steps">
+<div class="step"><div class="stepnum">1</div><div><b>Name the behavior.</b><br>“When comments are made about how we parent…”</div></div>
+<div class="step"><div class="stepnum">2</div><div><b>State your position.</b><br>“We are making this decision together.”</div></div>
+<div class="step"><div class="stepnum">3</div><div><b>State the limit.</b><br>“We’re not going to debate it during visits.”</div></div>
+<div class="step"><div class="stepnum">4</div><div><b>State the action you control.</b><br>“If the conversation continues, we’ll end the visit and reconnect later.”</div></div>
+</div></div>
+<div class="card"><h3>Nondefensive communication</h3><ul><li>Describe what happened rather than diagnosing motives.</li><li>Use “I” and “we” statements.</li><li>Ask directly for the behavior you want.</li><li>Do not turn the conversation into a historical trial.</li><li>Do not require the other person to agree with your interpretation before you act on your boundary.</li></ul>
+<div class="phrase">“I hear that you disagree. We’ve made our decision, and I’m not going to argue about it.” <button onclick="copyPhrase(this)">Copy</button></div>
+<div class="phrase">“I appreciate the offer. We’ll ask if we want advice.” <button onclick="copyPhrase(this)">Copy</button></div>
+<div class="phrase">“That comment is not okay with me. If it continues, I’m going to step away.” <button onclick="copyPhrase(this)">Copy</button></div>
+</div>
+</div>
+</section>
+
+<section><div class="section-head"><h2>6. When anger shows up</h2><span class="muted">Use anger as information, not a weapon.</span></div>
+<div class="card"><p>Strong anger can signal that something important has been violated. Before a difficult conversation, give yourself a private outlet: write uncensored thoughts, talk with a trusted professional, move your body, or pause until your nervous system is steadier. The goal is not to deny anger; it is to keep anger from choosing your words for you.</p>
+<div class="grid2"><div><h3>Ask yourself</h3><ul><li>What exactly happened?</li><li>What did I need that was missing?</li><li>What boundary was crossed?</li><li>What part is mine to change?</li></ul></div><div><h3>Before speaking</h3><ul><li>Lower the intensity.</li><li>Choose one issue.</li><li>Know the request you want to make.</li><li>Decide what you will do if the pattern continues.</li></ul></div></div></div></section>
+
+
+<section id="practical">
+  <div class="eyebrow">Practical playbook</div>
+  <h2>What to do in real life</h2>
+  <p class="lead">Boundaries are easier to use when you have a plan for the exact moment a familiar problem happens.</p>
+  <div class="grid">
+    <article class="card">
+      <h3>1. Decide your “three non-negotiables”</h3>
+      <p>Choose three behaviors you will not participate in—for example, insults, yelling, or surprise visits. Keep the list short enough to remember.</p>
+      <div class="tip"><strong>Write this:</strong> “If X happens, I will do Y.”</div>
+    </article>
+    <article class="card">
+      <h3>2. Stop over-explaining</h3>
+      <p>You do not need to prove that your boundary is reasonable. A short answer is often easier to maintain than a long defense.</p>
+      <div class="script"><strong>Try:</strong> “That doesn't work for us.”</div>
+    </article>
+    <article class="card">
+      <h3>3. Use the broken-record method</h3>
+      <p>Repeat the same calm sentence instead of entering a debate. Change the subject or end the conversation if the pressure continues.</p>
+      <div class="script"><strong>Try:</strong> “I hear you. Our decision is the same.”</div>
+    </article>
+    <article class="card">
+      <h3>4. Don't negotiate during escalation</h3>
+      <p>If voices rise, insults start, or someone is trying to force an immediate answer, pause. You can revisit the issue later.</p>
+      <div class="script"><strong>Try:</strong> “We're going to pause this conversation. We can talk another time.”</div>
+    </article>
+    <article class="card">
+      <h3>5. Control access, not other people</h3>
+      <p>You may not be able to stop someone from criticizing, guilt-tripping, or complaining. You can decide how much access you give them.</p>
+      <div class="tip"><strong>Adjust:</strong> visits, call length, topics, location, timing, or whether you respond at all.</div>
+    </article>
+    <article class="card">
+      <h3>6. Make visits easier to exit</h3>
+      <p>Use your own transportation when possible, set an end time, and agree with your partner on a private signal for “we're leaving.”</p>
+      <div class="tip"><strong>Before the visit:</strong> decide the start time, end time, transportation, and exit phrase.</div>
+    </article>
+    <article class="card">
+      <h3>7. Keep children out of adult conflict</h3>
+      <p>Don't use children as messengers, spies, referees, or emotional support. If an adult conflict affects a child, discuss it directly with the other adult.</p>
+      <div class="script"><strong>Try:</strong> “Please don't put them in the middle of this. We'll handle the adult conversation ourselves.”</div>
+    </article>
+    <article class="card">
+      <h3>8. Give your partner a specific job</h3>
+      <p>Instead of “defend me,” ask for one concrete action: redirect the topic, correct misinformation, end the call, or back the agreed plan.</p>
+      <div class="script"><strong>Try:</strong> “If your parent comments on our parenting, please say, ‘We've decided what works for our family.’”</div>
+    </article>
+    <article class="card">
+      <h3>9. Plan for predictable pressure points</h3>
+      <p>Think ahead about holidays, birthdays, money, childcare, pregnancy/parenting decisions, travel, and overnight stays. Decide your response before the pressure arrives.</p>
+      <div class="tip"><strong>Ask:</strong> “What usually happens? What will we do differently this time?”</div>
+    </article>
+    <article class="card">
+      <h3>10. Document patterns when needed</h3>
+      <p>For recurring conflict, keep a private factual record of dates, requests, agreements, and what happened. This can help you and your partner identify patterns without relying on memory during stressful moments.</p>
+      <div class="tip"><strong>Keep it factual:</strong> what was said/done, what you did, and what happened next.</div>
+    </article>
+  </div>
+
+  <div class="callout">
+    <h3>When a boundary is repeatedly ignored</h3>
+    <p>A boundary is not a request for someone else to behave differently. It is a decision about what <em>you</em> will do. If a pattern continues, consider increasing distance, shortening contact, changing the setting, or taking a temporary break.</p>
+  </div>
+
+  <div class="card">
+    <h3>Quick scripts for common situations</h3>
+    <div class="script-list">
+      <div class="script"><strong>Unwanted advice:</strong> “Thanks for sharing your perspective. We've made our decision.”</div>
+      <div class="script"><strong>Criticism:</strong> “I'm not going to continue a conversation where I'm being insulted.”</div>
+      <div class="script"><strong>Guilt:</strong> “I understand you're disappointed. Our decision is still the same.”</div>
+      <div class="script"><strong>Pressure for an immediate answer:</strong> “We don't make decisions under pressure. We'll let you know.”</div>
+      <div class="script"><strong>Repeated calls/texts:</strong> “We're not available right now. We'll respond when we can.”</div>
+      <div class="script"><strong>Boundary violation:</strong> “We asked you not to do that. If it happens again, we'll end the visit.”</div>
+    </div>
+  </div>
+</section>
+
+<section id="partner"><div class="section-head"><h2>7. Enlist your partner as an ally</h2><span class="muted">Move from “choose me” to “build with me.”</span></div>
+<div class="grid2">
+<div class="card"><h3>Start with the relationship</h3><p>Choose a calm moment. Make clear that the goal is a healthier partnership, not winning a case against their family. Acknowledge your own contribution to the cycle without taking responsibility for another adult’s behavior.</p><textarea data-note="partner"></textarea><div class="save-note">Your reflection is saved only in this browser.</div></div>
+<div class="card"><h3>Make a concrete request</h3><p>Replace global requests (“stand up for me”) with observable actions: interrupt a disrespectful comment, confirm a household decision, end a conversation, or support a visit limit.</p><div class="phrase">“What would help me feel like we’re a team is…” <button onclick="copyPhrase(this)">Copy</button></div><div class="phrase">“When this happens again, I’d like us to…” <button onclick="copyPhrase(this)">Copy</button></div></div>
+</div>
+</section>
+
+<section><div class="section-head"><h2>8. Reality check</h2><span class="muted">Acceptance is not surrender.</span></div>
+<div class="card"><p>Some relationships become warmer. Some remain limited. Some require substantial distance. A realistic approach asks what the relationship can actually offer, rather than repeatedly spending energy trying to make another person become someone they are not.</p>
+<div class="grid2"><div class="callout"><strong>Accept</strong>What you cannot control: another adult’s beliefs, feelings, personality, willingness to change, or approval of you.</div><div class="callout"><strong>Act</strong>What you can influence: your availability, communication, boundaries, participation, household rules, and responses.</div></div>
+<textarea data-note="reality" placeholder="What am I hoping they will become? What can I realistically accept?"></textarea>
+</div></section>
+
+<section id="next"><div class="section-head"><h2>9. Your next step</h2><span class="muted">Keep it small and specific.</span></div>
+<div class="card">
+<div class="grid2">
+<div><h3>Choose one</h3><label><input type="radio" name="next"> Have one calm conversation with my partner.</label><br><label><input type="radio" name="next"> Set one specific boundary.</label><br><label><input type="radio" name="next"> Reduce one unnecessary point of exposure.</label><br><label><input type="radio" name="next"> Practice one response before the next interaction.</label><br><label><input type="radio" name="next"> Seek professional support.</label></div>
+<div><h3>Write your plan</h3><textarea data-note="plan" placeholder="The situation I want to change…&#10;What I will say/do…&#10;What I will do if it continues…"></textarea></div>
+</div>
+<div class="callout"><strong>Safety first</strong>If setting a boundary could reasonably expose you or someone else to physical violence, threats, stalking, financial retaliation, or other serious harm, prioritize safety planning and qualified professional or local support rather than confronting the person alone.</div>
+</div></section>
+</main>
+<footer>Developed by <a href="https://mindx.us/" target="_blank" rel="noopener">Mind X Associates</a></footer>
+<button id="top" aria-label="Scroll to top">↑</button>
+<script>
+const root=document.documentElement, theme=document.getElementById('theme');
+let savedTheme='';
+try{savedTheme=localStorage.getItem('theme')||''}catch(e){}
+if(savedTheme==='dark')root.dataset.theme='dark';
+function setTheme(dark){
+  if(dark) root.dataset.theme='dark'; else root.removeAttribute('data-theme');
+  theme.textContent=dark?'☀ Light':'◐ Dark';
+  theme.setAttribute('aria-pressed', dark?'true':'false');
+  try{localStorage.setItem('theme',dark?'dark':'')}catch(e){}
+}
+setTheme(root.dataset.theme==='dark');
+theme.addEventListener('click',()=>setTheme(root.dataset.theme!=='dark'));
+document.querySelectorAll('textarea[data-note]').forEach(el=>{const k='note_'+el.dataset.note;el.value=localStorage.getItem(k)||'';el.addEventListener('input',()=>localStorage.setItem(k,el.value))});
+const checks=[...document.querySelectorAll('.track')],bar=document.getElementById('bar');
+function update(){const done=checks.filter(x=>x.checked).length;bar.style.width=(done/checks.length*100)+'%';localStorage.setItem('checks',JSON.stringify(checks.map(x=>x.checked)))} 
+try{JSON.parse(localStorage.getItem('checks')||'[]').forEach((v,i)=>checks[i]&&(checks[i].checked=v))}catch(e){} checks.forEach(x=>x.addEventListener('change',update));update();
+function copyPhrase(btn){const t=btn.parentElement.firstChild.textContent.trim();navigator.clipboard?.writeText(t);btn.textContent='Copied';setTimeout(()=>btn.textContent='Copy',900)}
+const top=document.getElementById('top');addEventListener('scroll',()=>top.classList.toggle('show',scrollY>500));top.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+</script>
+</body></html>
